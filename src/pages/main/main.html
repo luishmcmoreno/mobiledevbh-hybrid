@@ -27,7 +27,8 @@
 </ion-list>
 
   <div text-center>
-    <ion-icon name="camera" (click)="takePicture()" class="camera-icon"></ion-icon>
+    <ion-icon *ngIf="!urlPicture" name="camera" (click)="takePicture()" class="camera-icon"></ion-icon>
+    <img *ngIf="urlPicture" src="{{ urlPicture }}" alt="Picture">
   </div>
 
   <button ion-button block color="primary" (click)="checkin()">Registrar checkin</button>
