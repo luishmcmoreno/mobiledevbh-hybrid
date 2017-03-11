@@ -6,13 +6,30 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>main</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Checkin</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+<ion-list>
+  <ion-item>
+    <ion-label floating>Nome</ion-label>
+    <ion-input type="text" [(ngModel)]="name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Twitter username</ion-label>
+    <ion-input type="text" [(ngModel)]="username"></ion-input>
+  </ion-item>
+</ion-list>
+
+  <div text-center>
+    <ion-icon name="camera" (click)="takePicture()" class="camera-icon"></ion-icon>
+  </div>
+
+  <button ion-button block color="primary" (click)="checkin()">Registrar checkin</button>
 
 </ion-content>

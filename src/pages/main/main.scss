@@ -1,3 +1,21 @@
 page-main {
+    .camera-icon {
+        font-size: 84px;
+        &:active {
+            color: #ff0000;
+        }
+    }
+}
 
+
+.gallery-icon {
+    ion-icon {
+        color: #ff0000;
+    }
+}
+
+.camera-icon {
+    ion-icon {
+        color: #000000;
+    }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, AlertController, ActionSheetController, NavParams } from 'ionic-angular';
 
 /*
   Generated class for the Main page.
@@ -13,7 +13,72 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MainPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  public name: string;
+  public username: string;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public actionSheetCtrl: ActionSheetController
+  ) {}
+
+  private checkinFail(): void {
+    let alert = this.alertCtrl.create({
+      buttons: ['Ok'],
+      message: 'Falha ao realizar o checkin',
+      title: 'Desculpe'
+    });
+    alert.present();
+    
+  }
+
+  private checkinSuccess(): void {
+    let alert = this.alertCtrl.create({
+      buttons: ['Ok'],
+      message: 'Checkin realizado com successo',
+      title: 'Obrigado, ' + this.name
+    });
+    alert.present();
+    
+  }
+
+  public checkin(): void {
+    console.log(this.name, this.username);
+    this.checkinSuccess();
+  }
+
+  private takeFromCamera(): void {
+    console.log('take from camera');
+  }
+
+  private takeFromGallery(): void {
+    console.log('take from gallery');
+  }
+
+  public takePicture(): void {
+    let action = this.actionSheetCtrl.create({
+      title: 'Selecione sua preferência',
+      buttons: [
+        {
+
+          text: 'Camera',
+          icon: 'camera',
+          role: 'camera',
+          cssClass: 'camera-icon',
+          handler: this.takeFromCamera
+        },
+        {
+          text: 'Galeria',
+          icon: 'images',
+          cssClass: 'gallery-icon',
+          role: 'gallery',
+          handler: this.takeFromCamera
+        }
+      ]
+    });
+    action.present();
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
